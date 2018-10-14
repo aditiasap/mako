@@ -16,13 +16,23 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 const { width } = Dimensions.get('window');
 
 class Welcome extends Component {
+	constructor(props) {
+		super(props);
+
+		this.onLoginPress = this.onLoginPress.bind(this);
+	}
+
+	onLoginPress() {
+		this.props.navigation.navigate('login');
+	}
+
 	render() {
 		return (
 			<View style={styles.topContainer}>
 				<View style={styles.logoContainer}>
 					<Text style={styles.logoText}>Mako</Text>
 				</View>
-				<View style={styles.searchContainer}>
+				<View style={styles.inputContainer}>
 					<Ionicon name="ios-search" size={25} color="#000" style={styles.iconStyle} />
 					<TextInput
 						placeholder='pilih lokasi "jakarta"'
@@ -63,6 +73,7 @@ class Welcome extends Component {
 				<View style={styles.loginSection}>
 					<TouchableOpacity
 						style={[styles.button, { borderColor: '#B39135' }]}
+						onPress={this.onLoginPress}
 					>
 						<Text style={[styles.buttonText, { color: '#B39135' }]}>MASUK</Text>
 					</TouchableOpacity>
@@ -88,7 +99,7 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 		marginHorizontal: 10
 	},
-	searchContainer: {
+	inputContainer: {
 		flexDirection: 'row',
 		borderWidth: 1,
 		borderColor: '#ddd',
@@ -149,7 +160,7 @@ const styles = StyleSheet.create({
 	},
 	logoText: {
 		fontSize: 20,
-		fontWeight: "700",
+		fontWeight: 'bold',
 		color: '#FF0000'
 	}
 });
