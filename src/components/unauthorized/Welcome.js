@@ -15,7 +15,7 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 
 const { width } = Dimensions.get('window');
 
-class App extends Component {
+class Welcome extends Component {
 	render() {
 		return (
 			<View style={styles.topContainer}>
@@ -36,7 +36,7 @@ class App extends Component {
 				<ScrollView>
 					<View style={styles.cardSection}>
 						<Image
-							source={require('./src/assets/images/companyProfileImage.png')}
+							source={require('../../assets/images/companyProfileImage.png')}
 							style={styles.companyProfileImage}
 						/>
 						<Text style={styles.commonText}>
@@ -81,7 +81,8 @@ const styles = StyleSheet.create({
 	topContainer: {
 		flex: 1,
 		paddingTop: (Platform.OS === 'ios' ? 20 : 0),
-		paddingHorizontal: 15
+		paddingHorizontal: 15,
+		backgroundColor: '#fff'
 	},
 	logoContainer: {
 		marginTop: 10,
@@ -153,4 +154,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default App;
+export default Welcome;
