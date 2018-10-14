@@ -11,6 +11,33 @@ import {
 import EvilIcon from 'react-native-vector-icons/EvilIcons';
 
 class LoginPage extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			username: '',
+			passcode: ''
+		};
+
+		this.onLoginPressed = this.onLoginPressed.bind(this);
+		this.usernameChanged = this.usernameChanged.bind(this);
+		this.passcodeChanged = this.passcodeChanged.bind(this);
+	}
+
+	onLoginPressed() {
+		if (this.state.username === 'test' && this.state.passcode === '1234') {
+			this.props.navigation.navigate('AppStack');			
+		}
+	}
+
+	usernameChanged(username) {
+		this.setState({ username });
+	}
+
+	passcodeChanged(passcode) {
+		this.setState({ passcode });
+	}
+
 	render() {
 		return (
 			<View style={styles.topContainer}>
@@ -26,6 +53,8 @@ class LoginPage extends Component {
 						autoCorrect={false}
 						underlineColorAndroid="transparent"
 						style={styles.input}
+						value={this.state.username}
+						onChangeText={this.usernameChanged}
 					/>
 				</View>
 				<View style={styles.inputContainer}>
@@ -38,10 +67,13 @@ class LoginPage extends Component {
 						underlineColorAndroid="transparent"
 						style={styles.input}
 						secureTextEntry
+						value={this.state.passcode}
+						onChangeText={this.passcodeChanged}
 					/>
 				</View>
 				<TouchableOpacity
 					style={styles.button}
+					onPress={this.onLoginPressed}
 				>
 					<Text style={styles.buttonText}>LOGIN</Text>
 				</TouchableOpacity>
