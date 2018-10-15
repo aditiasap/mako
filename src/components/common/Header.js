@@ -25,6 +25,7 @@ class Header extends Component {
 						autoCorrect={false}
 						underlineColorAndroid="transparent"
 						style={styles.input}
+						returnKeyType="search"
 					/>
 				</View>
 			</View>

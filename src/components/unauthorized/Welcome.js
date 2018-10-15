@@ -13,6 +13,8 @@ import {
 
 import Ionicon from 'react-native-vector-icons/Ionicons';
 
+import Header from '../common/Header';
+
 const { width } = Dimensions.get('window');
 
 class Welcome extends Component {
@@ -29,21 +31,8 @@ class Welcome extends Component {
 	render() {
 		return (
 			<View style={styles.topContainer}>
-				<View style={styles.logoContainer}>
-					<Text style={styles.logoText}>Mako</Text>
-				</View>
-				<View style={styles.inputContainer}>
-					<Ionicon name="ios-search" size={25} color="#000" style={styles.iconStyle} />
-					<TextInput
-						placeholder='pilih lokasi "jakarta"'
-						placeholderTextColor="#989898"
-						autoCapitalize="none"
-						autoCorrect={false}
-						underlineColorAndroid="transparent"
-						style={styles.input}
-					/>
-				</View>
-				<ScrollView>
+				<Header />
+				<ScrollView style={styles.scrollWrapper}>
 					<View style={styles.cardSection}>
 						<Image
 							source={require('../../assets/images/companyProfileImage.png')}
@@ -91,8 +80,6 @@ class Welcome extends Component {
 const styles = StyleSheet.create({
 	topContainer: {
 		flex: 1,
-		paddingTop: (Platform.OS === 'ios' ? 20 : 0),
-		paddingHorizontal: 15,
 		backgroundColor: '#fff'
 	},
 	logoContainer: {
@@ -130,12 +117,16 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 		marginBottom: 10
 	},
+	scrollWrapper: {
+		paddingHorizontal: 15
+	},
 	loginSection: {
 		borderTopWidth: 2,
 		borderColor: '#ddd',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		paddingVertical: 10
+		paddingVertical: 10,
+		paddingHorizontal: 15
 	},
 	button: {
 		width: (width - 60) / 2,
