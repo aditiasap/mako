@@ -4,36 +4,30 @@ import {
 	Text,
 	StyleSheet,
 	TextInput,
-	Platform,
-	TouchableOpacity
+	Platform
 } from 'react-native';
 
 import Ionicon from 'react-native-vector-icons/Ionicons';
 
 class Header extends Component {
-	constructor(props) {
-		super(props);
-
-		this.onSearchPressed = this.onSearchPressed.bind(this);
-	}
-
-	onSearchPressed() {
-		this.props.navigation.navigate(this.props.listing, { listing: this.props.listing });
-	}
-
 	render() {
 		return (
 			<View style={styles.topContainer}>
 				<View style={styles.logoContainer}>
 					<Text style={styles.logoText}>Mako</Text>
 				</View>
-				<TouchableOpacity
-					style={styles.searchButton}
-					onPress={this.onSearchPressed}
-				>
+				<View style={styles.inputContainer}>
 					<Ionicon name="ios-search" size={25} color="#000" style={styles.iconStyle} />
-					<Text style={styles.placeHolderText}>pilih lokasi "jakarta"</Text>
-				</TouchableOpacity>
+					<TextInput
+						placeholder='pilih lokasi "jakarta"'
+						placeholderTextColor="#989898"
+						autoCapitalize="none"
+						autoCorrect={false}
+						underlineColorAndroid="transparent"
+						style={styles.input}
+						returnKeyType="search"
+					/>
+				</View>
 			</View>
 		);
 	}
@@ -49,7 +43,7 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 		marginHorizontal: 10
 	},
-	searchButton: {
+	inputContainer: {
 		flexDirection: 'row',
 		borderWidth: 1,
 		borderColor: '#ddd',
@@ -63,8 +57,9 @@ const styles = StyleSheet.create({
 		paddingVertical: 5,
 		paddingRight: 10
 	},
-	placeHolderText: {
-		color: '#989898'
+	input: {
+		flex: 1,
+		color: '#000'
 	},
 	logoText: {
 		fontSize: 20,

@@ -15,16 +15,38 @@ import Jual from './components/authorized/Jual';
 import Beli from './components/authorized/Beli';
 
 import Header from './components/common/Header';
+import Listing from './components/common/Listing';
 
 const AuthStack = createStackNavigator({
-	welcome: {
+	Welcome: {
 		screen: Welcome,
 		navigationOptions: {
 			header: null
 		}
 	},
-	login: {
+	Login: {
 		screen: LoginPage,
+		navigationOptions: {
+			header: null
+		}
+	},
+	ListingOutside: {
+		screen: Listing,
+		navigationOptions: {
+			header: null
+		}
+	}
+});
+
+const AccountStack = createStackNavigator({
+	Account: {
+		screen: Account,
+		navigationOptions: {
+			header: null
+		}
+	},
+	ListingInside: {
+		screen: Listing,
 		navigationOptions: {
 			header: null
 		}
@@ -32,7 +54,7 @@ const AuthStack = createStackNavigator({
 });
 
 const tabStack = createMaterialTopTabNavigator({
-	Account: { screen: Account },
+	Account: { screen: AccountStack },
 	Transaksi: { screen: Transaksi },
 	Jual: { screen: Jual },
 	Beli: { screen: Beli }
@@ -74,9 +96,11 @@ const tabStack = createMaterialTopTabNavigator({
 const AppStack = createStackNavigator({
 	Home: {
 		screen: tabStack,
-		navigationOptions: {
-			header: <Header />
-		}
+		navigationOptions: ({ navigation }) => ({
+			header: () => {
+				return <Header navigation={navigation} listing="ListingInside" />
+			}
+		})
 	}
 });
 

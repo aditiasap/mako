@@ -25,13 +25,13 @@ class Welcome extends Component {
 	}
 
 	onLoginPress() {
-		this.props.navigation.navigate('login');
+		this.props.navigation.navigate('Login');
 	}
 
 	render() {
 		return (
 			<View style={styles.topContainer}>
-				<Header />
+				<Header navigation={this.props.navigation} listing="ListingOutside" />
 				<ScrollView style={styles.scrollWrapper}>
 					<View style={styles.cardSection}>
 						<Image
